@@ -11,13 +11,14 @@ import glob
 import sys
 sys.path.insert(0, './library')
 import plot_time_series
+import visibility_graph
 
 commodities = '../dataset/commodities/*.csv'
 tech_stocks = '../dataset/tech_stocks/*.csv'
 crypto = '../dataset/crypto/*.csv'
 forex = '../dataset/forex/*.csv'
 
-assets = [commodities, forex, crypto]
+assets = [crypto, commodities, forex]
 
 for asset in assets:
     for file_ in glob.glob(asset):
@@ -30,3 +31,6 @@ for asset in assets:
         else:
             print(file_, "is not plotted due to an error")
         ############################
+
+        ### degree distribution
+        visibility_graph.vg(ds_ts)

@@ -12,6 +12,7 @@ import sys
 sys.path.insert(0, './library')
 import plot_time_series
 import visibility_graph
+import horizontal_visibility_graph
 import degree_distribution
 
 commodities = '../dataset/commodities/*.csv'
@@ -24,8 +25,8 @@ assets = [crypto, commodities, forex]
 for asset in assets:
     for file_ in glob.glob(asset):
         ds_ts = pd.read_csv(file_, infer_datetime_format=True, low_memory=False)
-
-        '''### plotting time series
+        '''
+        ### plotting time series
         success = plot_time_series.plot_time_series(ds_ts)
         if success:
             print(file_, "is successfully plotted")
@@ -34,7 +35,10 @@ for asset in assets:
         ############################
 
         ### degree distribution
-        visibility_graph.vg(ds_ts)'''
+        visibility_graph.vg(ds_ts)
 
         ### plotting degree distribution
         degree_distribution.dd(ds_ts)
+        '''
+        ###horizontal visibility graph
+        horizontal_visibility_graph.hg(ds_ts)

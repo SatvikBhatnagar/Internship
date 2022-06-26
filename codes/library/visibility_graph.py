@@ -13,8 +13,7 @@ import definitions_main
 
 def vg(ds_ts):
     #defining variables
-    ds_close = ds_ts['Close']
-    ts = ds_close
+    ts = ds_ts['Close']
     date_start = ds_ts.iloc[0,0]
     date_last = ds_ts.iloc[-1,0]
     asset_name = ds_ts.loc[0,'Name']

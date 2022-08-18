@@ -33,6 +33,7 @@ def plot_time_series(ds_ts):
     plt.title('{} - ({}) - Time Series - Hourly - {} - {}'.format(asset_name, asset_symbol, year_start, year_last))
     plt.xlabel('Time - Hourly')
     plt.ylabel('Price - Closing (USD)')
+    plt.savefig('../renders/Time Series - {}'.format(asset_name))
     plt.show()
 
     return True

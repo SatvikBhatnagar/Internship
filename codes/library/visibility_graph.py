@@ -38,13 +38,19 @@ def vg(ds_ts):
         }
 
     ax = plt.gca()
-    nx.draw_networkx(nxg, ax = ax, pos=g.node_positions(), **graph_plot_options)
-
-    ax.plot(ts)
-
+    
     year_start = definitions_main.year_extraction_from_date(date_start)
     year_last= definitions_main.year_extraction_from_date(date_last)
+    
+    #plt.title()
+    
 
+    ax.tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
+    ax.plot(ts)
+    ax.set_title('Visibility Graph{} - ({}) - Time Series {} - {}'.format(asset_name, asset_symbol, year_start, year_last))
+    
+    nx.draw(nxg, ax = ax, pos=g.node_positions(), **graph_plot_options)
+    limits=plt.axis('on')
+    
+    plt.savefig('../renders/Time Series - {}'.format(asset_name))
 
-    plt.title('Visibility Graph{} - ({}) - Time Series {} - {}'.format(asset_name, asset_symbol, year_start, year_last))
-    plt.show()

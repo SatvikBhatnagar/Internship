@@ -11,7 +11,11 @@ import plot_graph_horizontal
 
 def hg(ds_ts):
     ts = ds_ts['Close']
+    asset_name = ds_ts.loc[0,'Name']
 
     g = HorizontalVG(directed=None).build(ts)
     ax=plt.gca()
     plot_graph_horizontal.plot_graph(g, ax=ax, title="directed=None", arrow_heads=True)
+    
+    plt.savefig('../renders/HG - {}'.format(asset_name))
+    plt.show()
